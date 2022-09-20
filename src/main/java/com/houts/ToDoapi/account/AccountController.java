@@ -3,7 +3,7 @@ package com.houts.ToDoapi.account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -18,21 +18,20 @@ public class AccountController {
     }
 
 
-
-    @GetMapping(path = "{account}")
-    public Account getAccount(@PathVariable("account") Long id) {
-        return account_service.getAccount(id);
+    // ===== Checks for username availability =====
+    @GetMapping(path = "usernames/{name}")
+    public boolean getCurrentUsernames(@PathVariable("name") String name) {
+        return account_service.checkForUsernameAvailability(name);
     }
 
-
-    @GetMapping()
-    public List<Account> getAccounts() {
-        return account_service.getAccounts();
+    // ===== Creates a new account String data contains firstName, lastName, email, username, password =====
+    @PostMapping(path = "createAccount")
+    public boolean createAccount(@RequestBody String data) {
+        return account_service.createAccount(data);
     }
 
-
-    @PostMapping
-    public void createAccount(@RequestParam String firstName, String lastName, String email, String password, String username) {
-        account_service.createAccount(firstName, lastName, email, password, username);
+    @PostMapping(path = "login")
+    public Map<String, String> accountLogin(@RequestBody String data) {
+        return account_service.accountLogin(data);
     }
 }

@@ -37,11 +37,11 @@ public class ToDoApiApplication {
 
 			Task task = new Task(1L, "Wash the car", LocalDate.now(), false);
 			Task task1 = new Task(1L, "Clean the House", LocalDate.now(), false);
-			Task task2 = new Task(2L, "Mow the yard", LocalDate.now(), false);
+			Task task2 = new Task(2L, "Work on fullstack api", LocalDate.now(), false);
 			Task task3 = new Task(1L, "Pick up the mail", LocalDate.now(), false);
-			Task task4 = new Task(1L, "Get all assignments done for Monday meeting. Need Kanban board", LocalDate.now(), false);
+			Task task4 = new Task(1L, "Work on building Kanban board", LocalDate.now(), false);
 			Task task5 = new Task(1L, "Need ReadMe files completed by Monday before meeting", LocalDate.now(), false);
-			Task task6 = new Task(1L, "Many items on app to complete yet. Get to work on it.", LocalDate.now(), false);
+			Task task6 = new Task(1L, "More test data to render todo list", LocalDate.now(), false);
 
 			accountRepository.saveAll(List.of(account, account2, account3));
 			taskRepository.saveAll(List.of(task, task1, task2, task3, task4, task5, task6));

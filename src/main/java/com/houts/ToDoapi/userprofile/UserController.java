@@ -15,7 +15,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Returns all users TODO: remove if not used
     @GetMapping()
     public List<UserProfile> getUsers() {
         return userService.getUsers();
