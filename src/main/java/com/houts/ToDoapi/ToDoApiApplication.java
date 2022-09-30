@@ -35,12 +35,12 @@ public class ToDoApiApplication {
 			UserProfile userProfile3 = new UserProfile("Buddy", "Houts", "bud@mail.com");
 			Account account3 = new Account("buddyhouts","9852", userProfile3);
 
-			Task task = new Task(1L, "Wash the car", LocalDate.now(), false);
-			Task task1 = new Task(1L, "Clean the House", LocalDate.now(), false);
+			Task task = new Task(1L, "Wash the car", LocalDate.now().minusDays(2), false);
+			Task task1 = new Task(1L, "Clean the House", LocalDate.now().minusDays(5), false);
 			Task task2 = new Task(2L, "Work on fullstack api", LocalDate.now(), false);
-			Task task3 = new Task(1L, "Pick up the mail", LocalDate.now(), false);
-			Task task4 = new Task(1L, "Work on building Kanban board", LocalDate.now(), false);
-			Task task5 = new Task(1L, "Need ReadMe files completed by Monday before meeting", LocalDate.now(), false);
+			Task task3 = new Task(1L, "Pick up the mail", LocalDate.now().minusDays(7), false);
+			Task task4 = new Task(1L, "Work on building Kanban board", LocalDate.now().minusDays(12), false);
+			Task task5 = new Task(1L, "Need ReadMe files completed by Monday before meeting", LocalDate.now().minusDays(3), false);
 			Task task6 = new Task(1L, "More test data to render todo list", LocalDate.now(), false);
 
 			accountRepository.saveAll(List.of(account, account2, account3));

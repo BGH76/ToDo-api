@@ -3,8 +3,10 @@ package com.houts.ToDoapi.userprofile;
 import com.houts.ToDoapi.exception.NotFoundException;
 import com.houts.ToDoapi.task.Task;
 import com.houts.ToDoapi.task.TaskRepository;
+import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -37,10 +39,11 @@ public class UserService {
     public List<UserProfile> getUserTasks(Long userId) {
         List<UserProfile> userProfile = userRepository.findUserProfileById(userId);
         List<Task> task = taskRepository.findAllByUserProfileId(userId);
-        task.forEach((t) -> {
-            userProfile.get(0).addTask(t);
-        });
-        System.out.println(userProfile);
+        task.stream()
+                .filter(f -> f.getComplete() == Boolean.FALSE)
+                        .forEach(i -> {
+                            userProfile.get(0).addTask(i);
+                        });
         return userProfile;
     }
 
@@ -49,7 +52,11 @@ public class UserService {
         Task task = taskRepository.findTaskById(id);
         task.setComplete(true);
         taskRepository.save(task);
+    }
 
-
+    // Add new task to user
+    public void addNewTaskToUser(String data) {
+        JSONObject jsonObject = new JSONObject(data);
+        taskRepository.save(new Task(jsonObject.getLong("userId") , jsonObject.getString("task"), LocalDate.now(), false));
     }
 }
