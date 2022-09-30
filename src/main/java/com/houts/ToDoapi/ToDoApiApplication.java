@@ -21,32 +21,31 @@ public class ToDoApiApplication {
 		SpringApplication.run(ToDoApiApplication.class, args);
 
 	}
-	@Bean
-	CommandLineRunner commandLineRunner(AccountRepository accountRepository, TaskRepository taskRepository) {
-		return args -> {
-			UserProfile userProfile = new UserProfile("Brian", "Houts", "houts@mail.com");
-			Account account = new Account("bhouts", "123", userProfile);
-
-
-			UserProfile userProfile2 = new UserProfile("Tucker", "Houts", "tuck@mail.com");
-			Account account2 = new Account("thouts","654321", userProfile2);
-//			userProfile2.addTask(new Task("take out the trash"));
-
-			UserProfile userProfile3 = new UserProfile("Buddy", "Houts", "bud@mail.com");
-			Account account3 = new Account("buddyhouts","9852", userProfile3);
-
-			Task task = new Task(1L, "Wash the car", LocalDate.now().minusDays(2), false);
-			Task task1 = new Task(1L, "Clean the House", LocalDate.now().minusDays(5), false);
-			Task task2 = new Task(2L, "Work on fullstack api", LocalDate.now(), false);
-			Task task3 = new Task(1L, "Pick up the mail", LocalDate.now().minusDays(7), false);
-			Task task4 = new Task(1L, "Work on building Kanban board", LocalDate.now().minusDays(12), false);
-			Task task5 = new Task(1L, "Need ReadMe files completed by Monday before meeting", LocalDate.now().minusDays(3), false);
-			Task task6 = new Task(1L, "More test data to render todo list", LocalDate.now(), false);
-
-			accountRepository.saveAll(List.of(account, account2, account3));
-			taskRepository.saveAll(List.of(task, task1, task2, task3, task4, task5, task6));
-//			System.out.println(accountRepository.findById(1L));
-		};
-	}
+//	@Bean
+//	CommandLineRunner commandLineRunner(AccountRepository accountRepository, TaskRepository taskRepository) {
+//		return args -> {
+//			UserProfile userProfile = new UserProfile("Brian", "Houts", "houts@mail.com");
+//			Account account = new Account("bhouts", "123", userProfile);
+//
+//
+//			UserProfile userProfile2 = new UserProfile("Tucker", "Houts", "tuck@mail.com");
+//			Account account2 = new Account("thouts","654321", userProfile2);
+//
+//			UserProfile userProfile3 = new UserProfile("Buddy", "Houts", "bud@mail.com");
+//			Account account3 = new Account("buddyhouts","9852", userProfile3);
+//
+//			Task task = new Task(1L, "Wash the car", LocalDate.now().minusDays(2), false);
+//			Task task1 = new Task(1L, "Clean the House", LocalDate.now().minusDays(5), false);
+//			Task task2 = new Task(2L, "Work on fullstack api", LocalDate.now(), false);
+//			Task task3 = new Task(1L, "Pick up the mail", LocalDate.now().minusDays(7), false);
+//			Task task4 = new Task(1L, "Work on building Kanban board", LocalDate.now().minusDays(12), false);
+//			Task task5 = new Task(1L, "Need ReadMe files completed by Monday before meeting", LocalDate.now().minusDays(3), false);
+//			Task task6 = new Task(1L, "More test data to render todo list", LocalDate.now(), false);
+//
+//			accountRepository.saveAll(List.of(account, account2, account3));
+//			taskRepository.saveAll(List.of(task, task1, task2, task3, task4, task5, task6));
+////			System.out.println(accountRepository.findById(1L));
+//		};
+//	}
 
 }

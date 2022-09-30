@@ -88,4 +88,12 @@ public class AccountService {
         });
         return map;
     }
+
+    // ===== Find account by username =====
+    public  Account getAccountByUsername(String username) {
+        return accountRepository.findAccountByUsername(username)
+                .orElseThrow(() -> {
+                    return new NotFoundException("Username not found");
+                });
+    }
 }

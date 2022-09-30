@@ -24,6 +24,12 @@ public class AccountController {
         return account_service.checkForUsernameAvailability(name);
     }
 
+    // ===== Gets account by username to check password =====
+    @GetMapping(path = "username/{username}")
+    public Account getDataByUsername(@PathVariable("username") String username) {
+        return account_service.getAccountByUsername(username);
+    }
+
     // ===== Creates a new account String data contains firstName, lastName, email, username, password =====
     @PostMapping(path = "createAccount")
     public boolean createAccount(@RequestBody String data) {
